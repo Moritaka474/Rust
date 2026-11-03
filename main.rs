@@ -1,32 +1,32 @@
-fn main() {
+/*
+This is an example of Rust’s memory safety principles in action. 
+In many low-level languages, this kind of check is not done, 
+and when you provide an incorrect index, invalid memory can be accessed. 
+Rust protects you against this kind of error by immediately exiting instead of allowing the memory access 
+and continuing.
 
-     /*
-     tuple 
-     Issue 1: i8 cannot store 500
-     An i8 can store values from -128 to 127.
-     Use i16 or i32 instead.
+Array
+*/
+use std::io;
+fn main()
+{
+     let a = [1,2,3];
+     println!("Enter the array index: ");
 
-     Issue 2: f8 is not a Rust data type
+     let mut index = String::new();
 
-     Rust supports:
-     - f32 – 32-bit floating point
-     - f64 – 64-bit floating point
-     
-     Issue 3: You cannot directly print a tuple using {}
-     */
+     io::stdin()
+       .read_line(&mut index)
+       .expect("Fail to read the line");
 
-     let tup: (i32,f32,u8) = (500,0.5,5);
-     let (x,y,z) = tup;
-     println!("{x},{y},{z}");  
+     let index: usize = index
+       .trim()
+       .parse()
+       .expect("Index is not number");
+
+     let element = a[index];
+     println!("Element = {element}");
 
 
-     let x: (i32, f64, u8) = (500, 6.4, 1);
-
-     let a = x.0;
-
-     let b = x.1;
-
-     let c = x.2;
-      println!("{a},{b},{c}");  
-   
 }
+
