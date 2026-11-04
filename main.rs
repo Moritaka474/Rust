@@ -1,28 +1,35 @@
 /*
-     User Input, where first take variable input as string without declaring datatype, 
-     then convert string to integer with parse(). 
+    Functions with Return Values
 
+    If you add a semicolon to the end of an expression, you turn it into a statement, 
+    and it will then not return a value. 
+    Keep this in mind as you explore function return values and expressions next.
 */
-
 use std::io;
 fn main()
 {
-    let mut length = String::new();
-    let mut width = String::new();
-    let area;
+   let mut x = String::new();
+   print!("Enter the value: \n");
+   io::stdin().read_line(&mut x).expect("Error");
 
-    println!("Enter the width: ");
-    io::stdin().read_line(&mut width).expect("Invalid number");
+   let x = x.trim().parse().expect("Error"); 
+   let a = square(x);
+   println!("{a}");
 
-    println!("Enter the length: ");
-    io::stdin().read_line(&mut length).expect("Invalid number");
+   let area = rectangle(5, 5);
+   println!("{area}");
 
-    let width: u32 = width.trim().parse().expect("Error");
-    let length: u32 = length.trim().parse().expect("Error");
+} 
 
-    area = width * length;
-    println!("Area of rectangle is: {area}");
-
-
+fn square(x:u32)->u32
+{
+   let result =   x*x;
+   result 
 
 }
+
+fn rectangle(width:u32,length:u32)->u32
+{
+    width * length
+}
+
