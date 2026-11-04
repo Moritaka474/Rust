@@ -1,32 +1,28 @@
-fn main() {
+/*
+     User Input, where first take variable input as string without declaring datatype, 
+     then convert string to integer with parse(). 
 
-     /*
-     tuple 
-     Issue 1: i8 cannot store 500
-     An i8 can store values from -128 to 127.
-     Use i16 or i32 instead.
+*/
 
-     Issue 2: f8 is not a Rust data type
+use std::io;
+fn main()
+{
+    let mut length = String::new();
+    let mut width = String::new();
+    let area;
 
-     Rust supports:
-     - f32 – 32-bit floating point
-     - f64 – 64-bit floating point
-     
-     Issue 3: You cannot directly print a tuple using {}
-     */
+    println!("Enter the width: ");
+    io::stdin().read_line(&mut width).expect("Invalid number");
 
-     let tup: (i32,f32,u8) = (500,0.5,5);
-     let (x,y,z) = tup;
-     println!("{x},{y},{z}");  
+    println!("Enter the length: ");
+    io::stdin().read_line(&mut length).expect("Invalid number");
+
+    let width: u32 = width.trim().parse().expect("Error");
+    let length: u32 = length.trim().parse().expect("Error");
+
+    area = width * length;
+    println!("Area of rectangle is: {area}");
 
 
-     let x: (i32, f64, u8) = (500, 6.4, 1);
 
-     let a = x.0;
-
-     let b = x.1;
-
-     let c = x.2;
-      println!("{a},{b},{c}");  
-   
 }
