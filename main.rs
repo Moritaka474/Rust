@@ -1,45 +1,22 @@
-/*
-    loop
-*/
-//------------------------------------------------//
-/* 
 use std::io;
+use rand::prelude::*;
 fn main()
 {
+    let mut counter: u32 = 0;
     let mut x = String::new();
-    println!("Enter the value: ");
+    println!("Enter the repeatation: ");
 
     io::stdin().read_line(&mut x).expect("Error");
-    let x = x.trim().parse().expect("Error");
+    let x = x.trim().parse().expect("Error");    
 
-    let mut counter = 1;
-    loop 
+    loop
     {
-       println!("{counter}");
+       let rng = rand::rng().random_range(1..=10);
+        println!("{rng}");
        if counter == x
-       {
-          break;
-       } 
-       counter+=1;
-          
-    }
-}
-*/
-
-// Returning Values from Loops
-/* 
-
-fn main()
-{
-    let mut counter = 0;
-    let result = loop {
-        counter+=1;
-        if counter == 10
-        {
-            break counter + 2;
-        }
+       {  
+           break;
+       }
+       counter+=1;    
     };
-    println!("{result}");
 }
-
-*/
