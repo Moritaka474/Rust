@@ -8,15 +8,18 @@ fn main()
 
     io::stdin().read_line(&mut x).expect("Error");
     let x = x.trim().parse().expect("Error");    
-
+    let mut sum: u32 = 0;
     loop
     {
        let rng = rand::rng().random_range(1..=10);
         println!("{rng}");
+        sum = sum+rng;
+        counter+=1; 
        if counter == x
-       {  
+       {   
+           println!("Sum of rng is: {sum}");
            break;
        }
-       counter+=1;    
+          
     };
 }
