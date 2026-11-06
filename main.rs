@@ -1,25 +1,65 @@
-use std::io;
-use rand::prelude::*;
 fn main()
 {
-    let mut counter: u32 = 0;
-    let mut x = String::new();
-    println!("Enter the repeatation: ");
+    let a = [1,2,3,4,5];
+    let mut index = 0;
 
-    io::stdin().read_line(&mut x).expect("Error");
-    let x = x.trim().parse().expect("Error");    
-    let mut sum: u32 = 0;
-    loop
+    while index < 5
     {
-       let rng = rand::rng().random_range(1..=10);
-        println!("{rng}");
-        sum = sum+rng;
-        counter+=1; 
-       if counter == x
-       {   
-           println!("Sum of rng is: {sum}");
-           break;
-       }
-          
-    };
+        println!("Value of array : {}",a[index]);
+        index+=1;
+    }
 }
+
+
+/////////////////////////////////////////////////
+/*
+fn main()
+{
+    let mut x = 1;
+    while x <= 20
+    {
+        if x%2 == 0
+        {
+            println!("Even counted = {x}");
+            
+        }
+          if x%2 != 0
+        {
+            println!("Odd counted = {x}");
+            
+        }
+         x+=1;
+    }
+
+}
+
+*/
+
+/////////////////////////////////////////
+
+/*
+fn main()
+{
+    let mut count = 0;
+    'counting_up: loop
+    {
+        println!("count = {count}");
+        let mut remain = 10;
+        loop
+        {
+            println!("remaining = {remain}");
+            if remain == 9
+            {
+                break;
+            }
+            if count == 2
+            {
+                break 'counting_up;
+            }
+            remain-=1;
+        }
+        count+=1;
+    }
+    println!("End count = {count}");
+}
+*/
