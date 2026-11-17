@@ -1,63 +1,26 @@
-// Reference and Borrowing
+// Dangling pointer
+/*
+**Definition of a Dangling Pointer**
 
-fn main()
-{
-    let s1 = String::from("Hello");
-    let s2 = &s1;
-    let s3 = &s1;
-
-    println!("{s2},{s3}");
-}
-
-/* ↑ Many readers OR one writer, Mut and Immut ↑ */
-
-
-//////////////////////////////////////////////////
-
-/* 
-fn main()
-{
-    let mut s = String::from("Rust");
-    change(&mut s);
-
-    println!("{s}");
-}
-
-fn change(s1:&mut String)
-{
-    s1.push_str(",aneous");
-}
+*   **Invalid Reference:** A pointer that points to a memory location that has been **deallocated** or **no longer valid**.
+*   **Origin:** Created when the object pointed to is deleted or goes out of scope, but the pointer’s value is not updated (e.g., set to `NULL`).
+*   **Risk:** Accessing or dereferencing a dangling pointer leads to **undefined behavior**, such as crashes, data corruption, or security vulnerabilities.
+*   **Common Causes:**
+    *   Returning a reference to a local variable.
+    *   Using memory after it has been freed (`free`/`delete`).
+    *   Using a pointer after the object it references has been destroyed.
 
 */
-//////////////////////////////////////////////////////
 
-/*  
+
 fn main()
 {
-    let s1 = String::from("Hello");
-    let s2 = s1.len();
- // let s3 = size(s1); // giving ownership to s3 by s1
-    let s3 = size(&s1); // no ownership is sharing only borrowing the reference
-
-    println!("{s2},{s3}");
+    let x = y();
+    println!("{x}");
 }
 
-fn size(s:&String)->usize
+fn y()->String             // instead of return the borrow value just pass the ownership that way it works
 {
-    s.len()
+    let z = String::from("Hello");
+    z
 }
-*/
-
-//////////////////////////////////////////////////////
-
-/* 
-fn main()
-{
-    let s1 = String::from("Hello");
-    let s2 = &s1;
-
-    println!("{:p}",s2);
-    println!("{s2}");
-}
-
-*/
